@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 
 const LANGS = [
-  { code: 'pt-BR', flag: '🇧🇷', label: 'PT' },
-  { code: 'en',    flag: '🇺🇸', label: 'EN' },
-  { code: 'es',    flag: '🇪🇸', label: 'ES' },
+  { code: 'pt-BR', label: 'Português' },
+  { code: 'en',    label: 'English' },
+  { code: 'es',    label: 'Español' },
 ]
 
 export default function Navbar() {
@@ -58,13 +58,7 @@ export default function Navbar() {
             <a
               key={anchor}
               href={`#${anchor}`}
-              style={{
-                fontSize: 14, fontWeight: 600,
-                color: scrolled ? '#3D3D5C' : 'rgba(255,255,255,0.9)',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => e.target.style.color = '#FF2D6B'}
-              onMouseLeave={e => e.target.style.color = scrolled ? '#3D3D5C' : 'rgba(255,255,255,0.9)'}
+              className={scrolled ? 'nav-link nav-link--dark' : 'nav-link nav-link--light'}
             >
               {label}
             </a>
@@ -88,7 +82,6 @@ export default function Navbar() {
                 transition: 'all 0.2s',
               }}
             >
-              <span>{current.flag}</span>
               <span>{current.label}</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
                 style={{ transform: langOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
@@ -118,7 +111,6 @@ export default function Navbar() {
                     onMouseEnter={e => { if (l.code !== lang) e.currentTarget.style.background = '#FAFAFA' }}
                     onMouseLeave={e => { if (l.code !== lang) e.currentTarget.style.background = '#fff' }}
                   >
-                    <span style={{ fontSize: 18 }}>{l.flag}</span>
                     <span>{l.label}</span>
                     {l.code === lang && (
                       <svg style={{ marginLeft: 'auto' }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF2D6B" strokeWidth="3">
@@ -138,6 +130,14 @@ export default function Navbar() {
       </div>
 
       <style>{`
+        .nav-link {
+          font-size: 14px; font-weight: 600; text-decoration: none;
+          transition: color 0.2s;
+        }
+        .nav-link--light { color: rgba(255,255,255,0.9); }
+        .nav-link--light:hover { color: #fff; opacity: 0.75; }
+        .nav-link--dark { color: #3D3D5C; }
+        .nav-link--dark:hover { color: #FF2D6B; }
         @media (max-width: 768px) {
           .nav-links { display: none !important; }
         }

@@ -5,7 +5,7 @@ const programs = [
     name: 'LATAM Pass',
     color: '#E5091A',
     bg: '#FFF0F0',
-    domain: 'latam.com',
+    image: '/programs/latam-pass.svg',
     fallbackBg: '#E5091A',
     fallbackText: 'L',
   },
@@ -13,7 +13,7 @@ const programs = [
     name: 'Smiles',
     color: '#FF6B00',
     bg: '#FFF5EE',
-    domain: 'smiles.com.br',
+    image: '/programs/smiles.svg',
     fallbackBg: '#FF6B00',
     fallbackText: 'S',
   },
@@ -21,7 +21,7 @@ const programs = [
     name: 'TudoAzul',
     color: '#0066CC',
     bg: '#EEF4FF',
-    domain: 'voeazul.com.br',
+    image: '/programs/tudoazul.svg',
     fallbackBg: '#0066CC',
     fallbackText: 'A',
   },
@@ -29,7 +29,7 @@ const programs = [
     name: 'Livelo',
     color: '#C0392B',
     bg: '#FFF0EE',
-    domain: 'livelo.com',
+    image: '/programs/livelo.svg',
     fallbackBg: '#C0392B',
     fallbackText: 'L',
   },
@@ -37,7 +37,7 @@ const programs = [
     name: 'Esfera',
     color: '#1A1A6E',
     bg: '#F0F0FF',
-    domain: 'esfera.com.br',
+    image: '/programs/esfera.svg',
     fallbackBg: '#1A1A6E',
     fallbackText: 'E',
   },
@@ -45,7 +45,7 @@ const programs = [
     name: 'Clube Smiles',
     color: '#FF9900',
     bg: '#FFFAEE',
-    domain: 'clubesmiles.com.br',
+    image: '/programs/clube-smiles.svg',
     fallbackBg: '#FF9900',
     fallbackText: 'CS',
   },
@@ -60,7 +60,7 @@ function ProgramIcon({ program }) {
   return (
     <div style={{ width: 36, height: 36, borderRadius: 8, overflow: 'hidden', flexShrink: 0, position: 'relative' }}>
       <img
-        src={`https://logo.clearbit.com/${program.domain}`}
+        src={program.image}
         alt={program.name}
         onError={handleError}
         style={{ width: 36, height: 36, objectFit: 'contain', borderRadius: 8, background: '#fff', display: 'block' }}
@@ -82,7 +82,7 @@ export default function Programs() {
   const { t } = useTranslation()
 
   return (
-    <section style={{ background: '#fff', padding: '64px 0' }}>
+    <section id="programs" style={{ background: '#fff', padding: '64px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <p style={{ fontSize: 13, fontWeight: 700, color: '#9CA3AF', letterSpacing: '0.08em', textTransform: 'uppercase' }}>

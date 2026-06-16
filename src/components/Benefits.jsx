@@ -10,7 +10,7 @@ export default function Benefits() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
           {/* Left */}
           <div>
-            <div className="section-label">🎯 {b.badge}</div>
+            <div className="section-label">{b.badge}</div>
             <h2 className="section-title">{b.title}</h2>
             <p className="section-subtitle" style={{ marginBottom: 40 }}>{b.subtitle}</p>
             <a href="#download" className="btn-primary">{b.cta}</a>
