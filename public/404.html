@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mylhas</title>
+    <script>
+      // Técnica SPA para GitHub Pages: salva o path completo e redireciona para /
+      // https://github.com/rafgraph/spa-github-pages
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      sessionStorage.setItem('spa-redirect', path + search + hash);
+      window.location.replace('/');
+    </script>
+  </head>
+  <body></body>
+</html>
