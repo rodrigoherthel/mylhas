@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from '../i18n/LanguageContext'
 
 const LANGS = [
@@ -11,6 +12,17 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const { lang, setLang, t } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  function handleAnchor(e, anchor) {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate(`/#${anchor}`)
+    }
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -36,7 +48,7 @@ export default function Navbar() {
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
         {/* Logo */}
-        <a href="#hero" style={{ display: 'flex', alignItems: 'center' }}>
+        <a href="/" onClick={e => handleAnchor(e, 'hero')} style={{ display: 'flex', alignItems: 'center' }}>
           <img
             src="/icon.png"
             alt="Mylhas"
@@ -57,7 +69,8 @@ export default function Navbar() {
           ].map(([label, anchor]) => (
             <a
               key={anchor}
-              href={`#${anchor}`}
+              href={`/#${anchor}`}
+              onClick={e => handleAnchor(e, anchor)}
               className={scrolled ? 'nav-link nav-link--dark' : 'nav-link nav-link--light'}
             >
               {label}
@@ -123,7 +136,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <a href="#download" className="btn-primary" style={{ fontSize: 14, padding: '10px 22px' }}>
+          <a href="/#download" onClick={e => handleAnchor(e, 'download')} className="btn-primary" style={{ fontSize: 14, padding: '10px 22px' }}>
             {t.nav.download}
           </a>
         </div>
